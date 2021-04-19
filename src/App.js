@@ -1,24 +1,29 @@
-import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter as Router, Route, Link} from 'react-router-dom'
+import UseState from './pages/useState'
+import UseEffect from './pages/useEffect'
+import UseRef from './pages/useRef'
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <ul>
+        <li><Link to="/useState">useState</Link></li>
+        <li><Link to="/useEffect">UseEffect</Link></li>
+        <li><Link to="/useRef">UseRef</Link></li>
+      </ul>
+      <Route path="/" component={App}>
+        <Route path="/useState">
+          <UseState></UseState>
+        </Route>
+        <Route path="/useEffect">
+          <UseEffect></UseEffect>
+        </Route>
+        <Route path="/useRef">
+          <UseRef></UseRef>
+        </Route>
+      </Route>
+    </Router>
   );
 }
 
